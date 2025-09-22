@@ -36,3 +36,61 @@ function extraDiscountRate(customerType) {
 
 //commit customer type
 
+const customers = [
+  {
+    number: 1,
+    customerType: "regular",
+    cart: [
+      { productName: "USB-C Cable", qty: 2 },
+      { productName: "Oat Milk", qty: 3 }
+    ]
+  },
+  {
+    number: 2,
+    customerType: "student",
+    cart: [
+      { productName: "Graphic Tee", qty: 1 },
+      { productName: "Laundry Pods", qty: 2 }
+    ]
+  },
+  {
+    number: 3,
+    customerType: "senior",
+    cart: [
+      { productName: "Notebook", qty: 4 },
+      { productName: "USB-C Cable", qty: 1 }
+    ]
+  }
+];
+
+function findByName(name) {
+  return products.find(p => p.name === name);
+}
+
+
+let idx = 0;
+while (idx < customers.length) {
+  const c = customers[idx];
+  const extraRate = extraDiscountRate(c.customerType);
+
+  let subtotal = 0;
+
+
+    for (let i = 0; i < c.cart.length; i++) {
+    const { productName, qty } = c.cart[i];
+    const prod = findByName(productName);
+    if (!prod || prod.inventory < qty) continue; // skip if not found or insufficient inventory
+
+    subtotal += prod.promoPrice * qty;
+    prod.inventory -= qty; // reduce inventory
+  }
+
+  const total = subtotal * (1 - extraRate);
+
+    console.log(`Customer #${c.number} total: $${total.toFixed(2)}`);
+
+  idx++;
+}
+
+//commit checkout process
+
