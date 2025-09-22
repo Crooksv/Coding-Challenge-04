@@ -94,3 +94,12 @@ while (idx < customers.length) {
 
 //commit checkout process
 
+const sample = products[0];
+for (const key in sample) {
+  if (Object.prototype.hasOwnProperty.call(sample, key)) {
+    console.log(`${key}: ${sample[key]}`);
+  }
+}
+
+//commit log each key/value pair for a single product after discounts are applied
+
