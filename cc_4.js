@@ -11,3 +11,20 @@ const products = [
 
 //commit products
 
+for (const product of products) {
+  let rate = 0;
+  switch (product.category) {
+    case "electronics": rate = 0.20;
+     break;
+    case "apparel":     rate = 0.15;
+     break;
+    case "groceries":
+    case "household":   rate = 0.10; 
+    break;
+    default:            rate = 0;
+  }
+  product.promoPrice = product.price * (1 - rate);
+}
+
+//commit dynamic discount
+
