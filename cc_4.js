@@ -103,3 +103,10 @@ for (const key in sample) {
 
 //commit log each key/value pair for a single product after discounts are applied
 
+for (const prod of products) {
+  for (const [k, v] of Object.entries(prod)) {
+    console.log(`${k}: ${v}`);
+  }
+}
+
+//object entries & finished
