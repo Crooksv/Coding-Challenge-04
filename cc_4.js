@@ -28,3 +28,11 @@ for (const product of products) {
 
 //commit dynamic discount
 
+function extraDiscountRate(customerType) {
+  if (customerType === "student") return 0.05;   
+  else if (customerType === "senior") return 0.07; 
+  else return 0; 
+}
+
+//commit customer type
+
